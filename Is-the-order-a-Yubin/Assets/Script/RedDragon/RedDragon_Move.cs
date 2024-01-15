@@ -51,6 +51,11 @@ public class RedDragon_Move : MonoBehaviour
 
     void Attack()
     {
+        // 플레이어 방향으로 0.05만큼 이동
+        float attackMoveDistance = 0.05f;
+        transform.Translate(Vector3.right * attackMoveDistance);
+
+        // flame 프리팹 생성
         Instantiate(flamePrefab, transform.position, transform.rotation);
     }
 
