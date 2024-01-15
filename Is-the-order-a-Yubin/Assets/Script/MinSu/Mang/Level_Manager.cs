@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Experience_Bar : MonoBehaviour
+public class Level_Manager : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
