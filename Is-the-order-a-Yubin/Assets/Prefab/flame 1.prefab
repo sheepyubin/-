@@ -104,6 +104,6 @@ MonoBehaviour:
   finalColor: {r: 0.7339368, g: 0, b: 1, a: 0}
   animationDuration: 2
   fadeDuration: 2
-  moveSpeed: 6
+  moveSpeed: 5
   player: {fileID: 0}
   bulletPrefab: {fileID: 0}

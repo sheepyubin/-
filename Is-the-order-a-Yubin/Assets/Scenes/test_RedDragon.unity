@@ -216,7 +216,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 8.577389
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -348,7 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 2046274219}
   speed: 2
-  stoppingDistance: 3
+  stoppingDistance: 3.5
   flamePrefab: {fileID: 3499080427860331995, guid: 32b7577d5ae61bf47b36d4610abd276c, type: 3}
 --- !u!50 &1876269149
 Rigidbody2D:
@@ -594,6 +594,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+  PlayerHP: 1000
+  prefabToDetect: {fileID: 1052982089}
 --- !u!1001 &7876464742255842562
 PrefabInstance:
   m_ObjectHideFlags: 0
