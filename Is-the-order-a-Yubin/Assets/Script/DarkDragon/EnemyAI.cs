@@ -12,7 +12,7 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         enemy = GetComponent<Enemy>();
-        enemyAnimator = enemy.enemyAnimator;
+    //    enemyAnimator = enemy.enemyAnimator;
     }
 
     void Update()
@@ -22,33 +22,33 @@ public class EnemyAI : MonoBehaviour
 
         float distance = Vector3.Distance(transform.position, target.position);
 
-        if (attackDelay == 0 && distance <= enemy.fieldOfVision)
-        {
-            FaceTarget();
+        //if (attackDelay == 0 && distance <= enemy.fieldOfVision)
+        //{
+        //    FaceTarget();
 
-            if (distance <= enemy.atkRange)
-            {
-                AttackTarget();
-            }
-            else
-            {
-                if (!enemyAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
-                {
-                    MoveToTarget();
-                }
-            }
-        }
-        else
-        {
-            enemyAnimator.SetBool("moving", false);
-        }
+        //    if (distance <= enemy.atkRange)
+        //    {
+        //        AttackTarget();
+        //    }
+        //    else
+        //    {
+        //        if (!enemyAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        //        {
+        //            MoveToTarget();
+        //        }
+        //    }
+        //}
+        //else
+        //{
+        //    enemyAnimator.SetBool("moving", false);
+        //}
     }
 
     void MoveToTarget()
     {
         float dir = target.position.x - transform.position.x;
         dir = (dir < 0) ? -1 : 1;
-        transform.Translate(new Vector2(dir, 0) * enemy.moveSpeed * Time.deltaTime);
+        //transform.Translate(new Vector2(dir, 0) * enemy.moveSpeed * Time.deltaTime);
         enemyAnimator.SetBool("moving", true);
     }
 
@@ -66,7 +66,7 @@ public class EnemyAI : MonoBehaviour
 
     void AttackTarget()
     {
-        target.GetComponent<Sword_Man>().nowHp -= enemy.atkDmg;
+        //target.GetComponent<Sword_Man>().nowHp -= enemy.atkDmg;
         enemyAnimator.SetTrigger("attack"); // 공격 애니메이션 실행
         attackDelay = enemy.atkSpeed; // 딜레이 충전
     }
