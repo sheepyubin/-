@@ -97,6 +97,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf079b03211f0114fb8be87342163dee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  flamePrefab: {fileID: 0}
-  shootingInterval: 0.1
+  startSize: {x: 0.1, y: 0.1, z: 1}
+  targetSize: {x: 1, y: 1, z: 1}
+  startColor: {r: 1, g: 0, b: 0.7944622, a: 0}
+  targetColor: {r: 1, g: 0, b: 0.81019783, a: 0}
+  finalColor: {r: 0.7339368, g: 0, b: 1, a: 0}
+  animationDuration: 2
+  fadeDuration: 2
+  moveSpeed: 6
+  player: {fileID: 0}
+  bulletPrefab: {fileID: 0}
