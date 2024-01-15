@@ -4,20 +4,30 @@ using UnityEngine;
 
 public class MoveScript : MonoBehaviour
 {
-    Rigidbody2D rigid; //물리이동을 위한 변수 선언 
+    public float speed;
 
-    private void Awake()
+    void Start()
     {
-
-        rigid = GetComponent<Rigidbody2D>(); //변수 초기화 
 
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        float h = Input.GetAxisRaw("Horizontal");
-        //rigid.AddForce(Vector2.right * h, ForceMode2D.Impulse);
-        rigid.MovePosition(Vector2.right * h);
+        if(Input.GetKey(KeyCode.W))
+        {
+            transform.position = transform.position + transform.up * Time.deltaTime * speed;
+        }
+        else if(Input.GetKey(KeyCode.S))
+        {
+            transform.position = transform.position - transform.up * Time.deltaTime * speed;
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            transform.position = transform.position + transform.right * Time.deltaTime * speed;
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            transform.position = transform.position - transform.right * Time.deltaTime * speed;
+        }
     }
 }
