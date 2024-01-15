@@ -12,6 +12,7 @@ public enum PlayerState
 
 public class PlayerFSM : MonoBehaviour
 {
+    
     private PlayerState playerState;
 
     private void Awake()

@@ -51,6 +51,7 @@ public class RedDragon_Move : MonoBehaviour
 
     void Attack()
     {
-        Instantiate(flamePrefab, transform.position, Quaternion.identity);
+        Instantiate(flamePrefab, transform.position, transform.rotation);
     }
+
 }

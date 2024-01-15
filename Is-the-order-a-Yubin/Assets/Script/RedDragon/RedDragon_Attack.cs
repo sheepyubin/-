@@ -12,7 +12,6 @@ public class RedDragon_Attack : MonoBehaviour
     public float animationDuration = 2.0f;
     public float fadeDuration = 2.0f;
     public float moveSpeed = 4.0f;
-    public float rotationSpeed = 6.0f;
 
     private float elapsedTime = 0.0f;
 
@@ -20,38 +19,34 @@ public class RedDragon_Attack : MonoBehaviour
     private Color originalColor;
 
     public GameObject player;
+    public GameObject bulletPrefab;
 
     void Start()
     {
-        // Player 오브젝트 방향에서 -5도와 5도 사이의 랜덤한 각도 설정
-        float randomAngle = Random.Range(-5.0f, 5.0f);
-        transform.rotation = Quaternion.Euler(0, 0, randomAngle);
-
-        originalSize = new Vector3(0.1f, 0.1f, 1.0f);
-        originalColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-
         player = GameObject.FindGameObjectWithTag("Player");
 
-        Invoke("DestroyGameObject", animationDuration + fadeDuration);
-    }
-
-    private void Update()
-    {
         if (player != null)
         {
             Vector3 directionToPlayer = player.transform.position - transform.position;
             float angle = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+            transform.rotation = Quaternion.Euler(0, 0, angle);
         }
         else
         {
             Debug.LogWarning("Player not found. Make sure the player has the 'Player' tag.");
         }
 
+        originalSize = new Vector3(0.1f, 0.1f, 1.0f);
+        originalColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+        Invoke("DestroyGameObject", animationDuration + fadeDuration);
+    }
+
+    private void Update()
+    {
+        MoveObject();
         AnimateSize();
         AnimateColor();
-        RotateObject();
-        MoveObject();
     }
 
     void DestroyGameObject()
@@ -85,32 +80,44 @@ public class RedDragon_Attack : MonoBehaviour
 
         SetObjectColor(newColor);
 
-        // 투명도가 0이 되면 파괴
         if (t >= 1.0f)
         {
             Destroy(gameObject);
         }
     }
 
+    bool hasRandomRotation = false;
+
     void MoveObject()
     {
-        // 진행 방향으로 이동
+        // 한 번 랜덤한 각도로 회전
+        if (!hasRandomRotation)
+        {
+            float randomRotation = Random.Range(-5.0f, 5.0f);
+            transform.Rotate(Vector3.forward * randomRotation);
+            hasRandomRotation = true;
+        }
+
+        // 현재 방향으로 이동
         transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+
+        // 총알 생성
+        if (bulletPrefab != null)
+        {
+            GameObject tempObject = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+
+            Rigidbody2D bulletRigidbody = tempObject.GetComponent<Rigidbody2D>();
+            if (bulletRigidbody != null)
+            {
+                bulletRigidbody.velocity = transform.right * moveSpeed;
+            }
+            else
+            {
+                Debug.LogWarning("Rigidbody2D not found. Make sure the bullet prefab has a Rigidbody2D component.");
+            }
+        }
     }
 
-    void RotateObject()
-    {
-        if (player != null)
-        {
-            Vector3 directionToPlayer = player.transform.position - transform.position;
-            float angle = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, 0, angle);
-        }
-        else
-        {
-            Debug.LogWarning("Player not found. Make sure the player has the 'Player' tag.");
-        }
-    }
 
     void SetObjectSize(Vector3 newSize)
     {
