@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &2064115609
+--- !u!1 &1626545588
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,47 +131,50 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2064115611}
-  - component: {fileID: 2064115612}
+  - component: {fileID: 1626545590}
+  - component: {fileID: 1626545589}
   m_Layer: 0
-  m_Name: Boids Spawner
+  m_Name: Boid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2064115611
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2064115609}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2064115612
+--- !u!114 &1626545589
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2064115609}
+  m_GameObject: {fileID: 1626545588}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e9bddf4630a3d3468670261767e4ad4, type: 3}
+  m_Script: {fileID: 11500000, guid: 52f897e3e9cb87f4d8245fc052ce4797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boidPrefab: {fileID: 2450158478588150987, guid: 479a5d77d0bdf5240ab2db7228bca749, type: 3}
-  numberOfBoids: 20
-  spawnAreaWidth: 18
-  spawnAreaHeight: 10
-  boids: []
+  boidPrefab: {fileID: 8983721535351775909, guid: 479a5d77d0bdf5240ab2db7228bca749, type: 3}
+  behavior: {fileID: 11400000, guid: c4477764cb024e448beb062d66f33740, type: 2}
+  numberOfBoid: 250
+  AgentDensity: 0.08
+  driveFactor: 10
+  maxSpeed: 5
+  neighborRadius: 1.5
+  avoidanceRadiusMultiplier: 0.5
+--- !u!4 &1626545590
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626545588}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.867413, y: 1.9097137, z: -0.02600503}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2134463072
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,4 +272,4 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 2134463075}
-  - {fileID: 2064115611}
+  - {fileID: 1626545590}
