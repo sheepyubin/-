@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour
     }
     void SetAttackSpeed(float speed)
     {
-        animator.SetFloat("attackSpeed", speed);
+    //    animator.SetFloat("attackSpeed", speed);
         atkSpeed = speed;
     }
 
@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour
         atkSpeed = _atkSpeed;
     }
 
-    public Sword_Man sword_man;
-    Image nowHpbar;
+    //public Sword_Man sword_man;
+    //Image nowHpbar;
 
 }
